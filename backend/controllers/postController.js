@@ -26,9 +26,10 @@ const createPost = async (req, res) => {
 		}
 
 		if (img) {
-			const uploadedResponse = await cloudinary.uploader.upload(img);
-			img = uploadedResponse.secure_url;
-		}
+      console.log("Image URL:", img);
+      const uploadedResponse = await cloudinary.uploader.upload(img);
+      img = uploadedResponse.secure_url;
+    }
 
 		const newPost = new Post({ postedBy, text, img });
 		await newPost.save();
